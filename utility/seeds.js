@@ -1,0 +1,16 @@
+const connection = require('../config/connection')
+const {User, Thought} = require('../models');
+const {users, thoughts} = requre('./data');
+
+connection.once('connected', async () => {
+    await User.deleteMany({});
+    await Thought.deleteMany({});
+    
+    await User.collection.insertMany(users);
+    await Thought.collection.insertMany(thoughts);
+
+    console.table(users);
+    console.table(thoughts);
+
+    process.exit(0);
+})
