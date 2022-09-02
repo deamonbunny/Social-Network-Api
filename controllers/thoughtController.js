@@ -54,7 +54,7 @@ module.exports = {
                     ? res.status(404).json({
                         message: 'Thought ID not Found'
                     })
-                    : user.findOneAndUpdate(
+                    : User.findOneAndUpdate(
                         {thoughts: req.params.thoughtId},
                         { $pull: {thoughts: req.params.thoughtId}},
                         {new:true}
@@ -72,7 +72,7 @@ module.exports = {
     createReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $addToSet: { reaction: req.body }},
+            { $addToSet: { reactions: req.body }},
             { runValidators: true, new: true }
         )
         .then((thought) =>
