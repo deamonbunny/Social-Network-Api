@@ -1,4 +1,4 @@
-const User = require('../models');
+const User = require('../models/User');
 
 module.exports = {
     getUsers(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
     updateUser(req, res) {
-        user.findOneAndUpdate(
+        User.findOneAndUpdate(
             { _id: req.params.userId},
             { $set: req.body },
             { runValidators: true, new: true }
@@ -42,13 +42,13 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
     deleteUser(req,res) {
-        user.findOneAndDelete({ _id: req.params.userId })
+        User.findOneAndDelete({ _id: req.params.userId })
             .then((user) => 
                 !user
                     ? res.status(404).json({
                         message: 'User ID not found'
                     })
-                    : User.Thought.deleteMany({ _id: {$in: user.Thought}})
+                    : Thought.deleteMany({ _id: {$in: user.Thought}})
             )
             .then((user) =>
                 !user
@@ -63,18 +63,18 @@ module.exports = {
     },
     addFriend(req, res) {
         User.findOneAndUpdate(
-         { _id: req.params.userId },
-         { $addToSet: { friends: req.body } },
-         { runValidators: true, new: true }
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.body } },
+        { runValidators: true, new: true }
         ) 
         .then((user) =>
-             !user
-                 ? res.status(404).json({ message: 'User ID not found' }) 
-                 : res.json(user)
+            !user
+                ? res.status(404).json({ message: 'User ID not found' }) 
+                : res.json(user)
         )
         .catch((err) => res.status(500).json(err))
-     },
-     deleteFriend(req, res) {
+    },
+    deleteFriend(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.userId },
             { $pull: { friends: { userId: req.params.friendId }}},
@@ -88,5 +88,5 @@ module.exports = {
                 : res.json(user) 
         )
         .catch((err) => res.status(500).json(err))
-     }
+    }
 };

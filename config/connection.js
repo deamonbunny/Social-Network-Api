@@ -1,6 +1,6 @@
 const { connect, connection } = require('mongoose');
 
-connect('mondgodb://localhost:27017/socialNetworkApi', {
+connect('mongodb://localhost:27017/socialNetwork', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

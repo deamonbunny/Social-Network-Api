@@ -8,7 +8,8 @@
       "start": "node server.js",
       "seed": "node utility/seeds"
     },
-
+    "author": "deamonbunny",
+    "license": "MIT",
     "dependencies": {
       "express": "^4.18.1",
       "mongoose": "^6.5.2"
