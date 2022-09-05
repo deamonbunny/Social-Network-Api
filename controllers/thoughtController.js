@@ -7,7 +7,7 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
     getOneThought(req, res) {
-        Thought.findOne({ _id: req.params.id })
+        Thought.findOne({ _id: req.params.thoughtid })
             .then((thought) => 
                 !thought
                     ? res.status(404).json({

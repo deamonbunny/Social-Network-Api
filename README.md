@@ -22,9 +22,9 @@ Collect and download using SSH key and CMD Terminal
 - access routes in insomnia
 
 ## Video Tutorial ##
-[Click Here For External Link](https://drive.google.com/file/d/1GFPu2yQjse8rPZX-IIrSY_JC1wWMGEBj/view?usp=sharing "Video Walk Through")
+[Click Here For External Link](https://drive.google.com/file/d/19qX2jYJbpCrXCHxKxi8QiM2-LbJzfEJS/view?usp=sharing "Video Walk Through")
 
-![Walk Through Video](./assets/SocialNetworkApi.mp4)
+![Walk Through Video](./assets/socialAPI.mp4)
 
 ## License ##
 MIT
